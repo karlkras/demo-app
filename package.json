@@ -1,0 +1,22 @@
+{
+  "name": "demo-app",
+  "version": "0.0.1",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "mocha",
+    "dev": "nodemon"
+  },
+  "author": "Karl Krasnowsky",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "mocha": "^10.7.0",
+    "nodemon": "^3.1.4"
+  }
+}

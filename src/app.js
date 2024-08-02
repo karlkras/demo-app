@@ -21,6 +21,8 @@ const stop = () => {
 process.on('SIGINT', stop);
 process.on('SIGTERM', stop);
 
+app.use(express.json());
+
 const loadRoutes = async (path = process.env.routes || "src/routes") => {
     if(!fs.existsSync(path)) return;
 

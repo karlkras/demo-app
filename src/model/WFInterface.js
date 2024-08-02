@@ -37,11 +37,58 @@ class WFInterface {
     }
 
     async createIssue (name) {
-        await this.createObj(WF_OBJ.ISSUE, new Map([
+        const res = await this.createObj(WF_OBJ.ISSUE, new Map([
             ["name", name],
             ["projectID", process.env['WF_REQUEST_QUEUE_PROJECT_ID']],
             ["queueTopicID", process.env['WF_ONBOARD_QUEUE_TOPIC_ID']]
         ]));
+        if(!res.error) {
+            return res.message.data;
+        } else {
+            return {};
+        }
+    }
+
+    async getIssues () {
+        let result = await this.search(WF_OBJ.ISSUE, new Map([
+            ["projectID", process.env["WF_REQUEST_QUEUE_PROJECT_ID"]]]));
+        if(!result.error) {
+            return result.message.data;
+        } else {
+            return [];
+        }
+    }
+
+    async getIssue (id) {
+        let result = await this.getObj(WF_OBJ.ISSUE, id);
+        if(!result.error) {
+            return result.message.data;
+        } else {
+            return {};
+        }
+    }
+
+    async updateIssue(id, fieldData) {
+        const dataMap = new Map();
+        for(const theField of fieldData) {
+            dataMap.set(theField.field, theField.value);
+        }
+        const result = await this.updateObj(WF_OBJ.ISSUE, id, dataMap);
+        if(!result.error) {
+            return result.message.data;
+        } else {
+            return {};
+        }
+
+    }
+
+    async deleteIssue (id) {
+        let result = await this.deleteObj(WF_OBJ.ISSUE, id);
+        if(!result.error) {
+            return result.message.data;
+        } else {
+            return {};
+        }
     }
 
     /**

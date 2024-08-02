@@ -4,3 +4,9 @@ export const REST_VERB = {
     PUT: "put",
     DELETE: "delete"
 }
+
+export const WF_OBJ = {
+    USER: "USER",
+    PROJECT: "PROJ",
+    ISSUE: "OPTASK"
+}
